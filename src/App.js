@@ -1,24 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+function Food({ name, picture }) {
+  return (
+    <div>
+      <h2>I like {name}</h2>
+      <img src={picture} alt={name}/>
+    </div>
+  );
+}
+
+const foodILike = [
+  {
+    id: 1,
+    name: 'kimchi',
+    image: 'https://m.jnmall.kr/web/product/big/201910/4b83072de272a51edffa420ab3b2fa98.jpg',
+  },
+  {
+    id: 2,
+    name: 'samgyopsal',
+    image: 'https://cdn.imweb.me/thumbnail/20200324/876cb6cbe8132.jpg',
+  },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {foodILike.map(dish => (
+        <Food key={dish.id} name={dish.name} picture={dish.image}/>
+      ))}
     </div>
   );
 }
